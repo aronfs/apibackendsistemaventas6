@@ -185,7 +185,7 @@ public partial class DbventaContext : DbContext
             entity.Property(e => e.Correo)
                 .HasMaxLength(40)
                 .HasColumnName("correo");
-            entity.Property(e => e.EsActivo)
+            entity.Property(e => e.esActivo)
                 .HasDefaultValue(true)
                 .HasColumnName("esactivo");
             entity.Property(e => e.FechaRegistro)

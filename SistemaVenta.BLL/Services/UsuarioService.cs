@@ -32,7 +32,7 @@ namespace SistemaVenta.BLL.Services
                 var queryUsuario = await _usuarioRepository.Consultar();
                 var listaUsuario = queryUsuario
                     .Include(rol => rol.IdRolNavigation)
-                    .Where(u => u.EsActivo == true) // Filtrar solo los usuarios activos
+                    .Where(u => u.esActivo == true) // Filtrar solo los usuarios activos
                     .Select(u => new Usuario
                     {
                         IdUsuario = u.IdUsuario,
@@ -40,7 +40,7 @@ namespace SistemaVenta.BLL.Services
                         Correo = u.Correo,
                         IdRol = u.IdRol,
                         Clave = u.Clave,
-                        EsActivo = u.EsActivo,
+                        esActivo = u.esActivo,
                         FechaRegistro = u.FechaRegistro,
                         foto = u.foto
                     })
@@ -61,7 +61,7 @@ namespace SistemaVenta.BLL.Services
                 var queryUsuario = await _usuarioRepository.Consultar();
                 var listaUsuario = queryUsuario
                     .Include(rol => rol.IdRolNavigation)
-                    .Where(u => u.EsActivo == false) // Filtrar solo los usuarios inactivos
+                    .Where(u => u.esActivo == false) // Filtrar solo los usuarios inactivos
                     .Select(u => new Usuario
                     {
                         IdUsuario = u.IdUsuario,
@@ -69,7 +69,7 @@ namespace SistemaVenta.BLL.Services
                         Correo = u.Correo,
                         IdRol = u.IdRol,
                         Clave = u.Clave,
-                        EsActivo = u.EsActivo,
+                        esActivo = u.esActivo,
                         FechaRegistro = u.FechaRegistro,
                         foto = u.foto
                     })
@@ -176,7 +176,7 @@ namespace SistemaVenta.BLL.Services
                 usuarioEncontrado.Correo = usuarioModelo.Correo;
                 usuarioEncontrado.IdRol = usuarioModelo.IdRol;
                 usuarioEncontrado.Clave = usuarioModelo.Clave;
-                usuarioEncontrado.EsActivo = usuarioModelo.EsActivo;
+                usuarioEncontrado.esActivo = usuarioModelo.esActivo;
 
                 // Validar la foto antes de asignarla
                 usuarioEncontrado.foto = !string.IsNullOrWhiteSpace(usuarioModelo.foto) ? usuarioModelo.foto : usuarioEncontrado.foto;
@@ -311,7 +311,7 @@ namespace SistemaVenta.BLL.Services
                     throw new TaskCanceledException("El usuario no existe!!!!");
 
                 // Cambiar estado a inactivo
-                usuarioEncontrado.EsActivo = false;
+                usuarioEncontrado.esActivo = false;
 
                 bool respuesta = await _usuarioRepository.Editar(usuarioEncontrado);
 
@@ -333,7 +333,7 @@ namespace SistemaVenta.BLL.Services
             if (usuario == null)
                 throw new TaskCanceledException("El usuario no existe.");
 
-            usuario.EsActivo = true;
+            usuario.esActivo = true;
 
             bool actualizado = await _usuarioRepository.Editar(usuario);
 

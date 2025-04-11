@@ -15,7 +15,7 @@ public partial class Usuario
 
     public string? Clave { get; set; }
 
-    public bool? EsActivo { get; set; }
+    public bool? esActivo { get; set; }
 
     public string? foto { get; set; }
 

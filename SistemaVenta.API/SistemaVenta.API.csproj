@@ -7,7 +7,6 @@
     <UseIIS>true</UseIIS>
     <IISExpressSSLPort>0</IISExpressSSLPort>
     <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    <!-- Asegura que archivos extra se incluyan también al publicar -->
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,15 +23,5 @@
     <ProjectReference Include="..\SistemaVenta.IOC\SistemaVenta.IOC.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-    </Content>
-    <Content Include="appsettings.Development.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>
+
