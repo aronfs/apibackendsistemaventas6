@@ -1,3 +1,8 @@
 [build]
-dockerfile = "Dockerfile"
-buildCommand = "dotnet publish SistemaVenta.API/SistemaVenta.API.csproj -c Release -o /app/publish"
+builder = "NIXPACKS"
+
+[variables]
+DOTNET_CLI_TELEMETRY_OPTOUT = "1"
+
+[start]
+cmd = "dotnet SistemaVenta.API/SistemaVenta.API.dll"
