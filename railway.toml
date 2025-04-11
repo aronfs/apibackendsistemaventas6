@@ -1,0 +1,3 @@
+[build]
+dockerfile = "Dockerfile"
+buildCommand = "dotnet publish SistemaVenta.API/SistemaVenta.API.csproj -c Release -o /app/publish"
