@@ -15,18 +15,16 @@ COPY ./SistemaVenta.Utility/SistemaVenta.Utility.csproj ./SistemaVenta.Utility/
 RUN dotnet restore
 COPY . .
 
-# OJO: salida a una carpeta llamada `out`
 RUN dotnet publish SistemaVenta.API/SistemaVenta.API.csproj -c Release -o /app/out
 
-# Etapa 2: Imagen de producción
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
+# Etapa 2: Producción
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
 
-# Entramos al directorio `out`
-WORKDIR /app/out
+WORKDIR /app
 
 COPY --from=build /app/out .
 
 EXPOSE 80
 
-# ¡Este es el arranque obligatorio desde dentro de /app/out!
-ENTRYPOINT ["dotnet", "SistemaVenta.API.dll"]
+# Este es el secreto: usar sh para ejecutar el comando desde /app
+CMD ["sh", "-c", "cd /app && dotnet SistemaVenta.API.dll"]
