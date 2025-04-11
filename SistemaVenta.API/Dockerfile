@@ -15,12 +15,13 @@ COPY SistemaVenta.Utility/SistemaVenta.Utility.csproj SistemaVenta.Utility/
 # Restaurar dependencias
 RUN dotnet restore
 
-# Copiar el resto del código fuente
+# Copiar todo el código fuente
 COPY . .
 
 # Publicar la aplicación
 WORKDIR /src/SistemaVenta.API
 RUN dotnet publish -c Release -o /app/publish
+RUN cp appsettings*.json /app/publish/
 
 # Etapa 2: Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
@@ -31,7 +32,7 @@ EXPOSE 5185
 ENV ASPNETCORE_URLS=http://+:5185
 ENV ASPNETCORE_ENVIRONMENT=Production
 
-# Copiar archivos publicados
+# Copiar el contenido publicado
 COPY --from=build /app/publish .
 
 # Iniciar la aplicación
