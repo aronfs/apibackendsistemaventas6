@@ -1,5 +1,5 @@
 # Etapa de build
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /app
 
 # Copiar solución y proyectos para restaurar dependencias
@@ -15,26 +15,27 @@ COPY SistemaVenta.Utility/*.csproj ./SistemaVenta.Utility/
 # Restaurar dependencias
 RUN dotnet restore
 
-# Copiar todo el código
+# Copiar el resto del código fuente
 COPY . .
 
-# Publicar la app
+# Publicar la aplicación
 WORKDIR /app/SistemaVenta.API
 RUN dotnet publish -c Release -o /app/out
 
 # Etapa final
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
 WORKDIR /app
 
-# Exponer el puerto (debe coincidir con el configurado en Railway)
+# Exponer el puerto que se usará (ajustar si necesario)
 EXPOSE 5185
 
-# Variables opcionales
-ENV ASPNETCORE_URLS=http://+:5186
+# Variables de entorno (ajustar según tus necesidades)
+ENV ASPNETCORE_URLS=http://+:5185
 ENV ASPNETCORE_ENVIRONMENT=Production
 
-# Copiar la app publicada
+# Copiar archivos publicados desde la etapa anterior
 COPY --from=build /app/out ./
 
-# Iniciar la app
+# Iniciar la aplicación
 ENTRYPOINT ["dotnet", "SistemaVenta.API.dll"]
+
