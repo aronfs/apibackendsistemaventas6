@@ -2,38 +2,32 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 
-# Copiar archivos de solución y proyectos
-COPY APISistemaVentas.sln ./
-COPY SistemaVenta.API/SistemaVenta.API.csproj SistemaVenta.API/
+# Copiamos todos los proyectos necesarios
 COPY SistemaVenta.BLL/SistemaVenta.BLL.csproj SistemaVenta.BLL/
 COPY SistemaVenta.DAL/SistemaVenta.DAL.csproj SistemaVenta.DAL/
-COPY SistemaVenta.DTO/SistemaVenta.DTO.csproj SistemaVenta.DTO/
-COPY SistemaVenta.IOC/SistemaVenta.IOC.csproj SistemaVenta.IOC/
 COPY SistemaVenta.Model/SistemaVenta.Model.csproj SistemaVenta.Model/
-COPY SistemaVenta.Utility/SistemaVenta.Utility.csproj SistemaVenta.Utility/
+COPY SistemaVenta.IOC/SistemaVenta.IOC.csproj SistemaVenta.IOC/
+COPY SistemaVenta.API/SistemaVenta.API.csproj SistemaVenta.API/
 
-# Restaurar dependencias
-RUN dotnet restore
+# Restauramos dependencias
+RUN dotnet restore SistemaVenta.API/SistemaVenta.API.csproj
 
-# Copiar todo el código fuente
+# Copiamos el resto del código
 COPY . .
 
-# Publicar la aplicación
+# Publicamos la app
 WORKDIR /src/SistemaVenta.API
 RUN dotnet publish -c Release -o /app/publish
-RUN cp appsettings*.json /app/publish/
 
 # Etapa 2: Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
 WORKDIR /app
 
-# Exponer el puerto
-EXPOSE 5185
-ENV ASPNETCORE_URLS=http://+:5185
-ENV ASPNETCORE_ENVIRONMENT=Production
-
-# Copiar el contenido publicado
+# Copiamos los archivos publicados desde la etapa anterior
 COPY --from=build /app/publish .
 
-# Iniciar la aplicación
+# Exponemos el puerto
+EXPOSE 80
+
+# Ejecutamos la app
 ENTRYPOINT ["dotnet", "SistemaVenta.API.dll"]
