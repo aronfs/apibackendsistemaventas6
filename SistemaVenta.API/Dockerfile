@@ -1,30 +1,31 @@
 # Etapa de build
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /app
+WORKDIR /src
 
-# Copiamos todo el código y config
+# Copiar todo
 COPY . .
-
-# Asegurar que los archivos de configuración estén incluidos en el publish
-COPY SistemaVenta.API/appsettings*.json SistemaVenta.API/
 
 # Restaurar dependencias
 RUN dotnet restore "APISistemaVentas.sln"
 
-# Publicar la app (esto generará los binarios y config en /app/out)
+# Publicar la app
 RUN dotnet publish "SistemaVenta.API/SistemaVenta.API.csproj" -c Release -o /app/out
 
-# Etapa de runtime
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
+# Etapa final: runtime
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
 WORKDIR /app
 
-# Puerto expuesto (ajústalo si cambiaste en Program.cs)
+# Exponer el puerto
 EXPOSE 5185
 ENV ASPNETCORE_URLS=http://+:5185
 ENV ASPNETCORE_ENVIRONMENT=Production
 
-# Copiar el resultado de la publicación
+# Copiar salida publicada
 COPY --from=build /app/out .
 
-# Ejecutar la aplicación
+# 🚨 FORZAR aquí los archivos de configuración si no llegaron con el publish
+COPY SistemaVenta.API/appsettings.json ./appsettings.json
+COPY SistemaVenta.API/appsettings.Development.json ./appsettings.Development.json
+
+# Ejecutar la app
 ENTRYPOINT ["dotnet", "SistemaVenta.API.dll"]
