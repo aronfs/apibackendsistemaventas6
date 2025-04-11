@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NYtJVXOV44Y=",
+  "dgSpecHash": "Ww0RlTQBjsk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\arons\\Desktop\\Produccion\\apibackendsistemaventasaspnetcore8\\SistemaVenta.BLL\\SistemaVenta.BLL.csproj",
+  "projectFilePath": "C:\\Users\\arons\\Desktop\\Produccion\\apibackendsistemaventasaspnetcore6\\SistemaVenta.BLL\\SistemaVenta.BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\arons\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\arons\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

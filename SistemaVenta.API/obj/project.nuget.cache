@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "B/nRttd4tH4=",
+  "dgSpecHash": "WdNKeHtLVhM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\arons\\Desktop\\Produccion\\apibackendsistemaventasaspnetcore8\\SistemaVenta.API\\SistemaVenta.API.csproj",
+  "projectFilePath": "C:\\Users\\arons\\Desktop\\Produccion\\apibackendsistemaventasaspnetcore6\\SistemaVenta.API\\SistemaVenta.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\arons\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\arons\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

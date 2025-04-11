@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nuna2HgoCLg=",
+  "dgSpecHash": "EGiBRvjAfUY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\arons\\Desktop\\Produccion\\apibackendsistemaventasaspnetcore8\\SistemaVenta.Model\\SistemaVenta.Model.csproj",
+  "projectFilePath": "C:\\Users\\arons\\Desktop\\Produccion\\apibackendsistemaventasaspnetcore6\\SistemaVenta.Model\\SistemaVenta.Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\arons\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\arons\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.25\\microsoft.entityframeworkcore.6.0.25.nupkg.sha512",

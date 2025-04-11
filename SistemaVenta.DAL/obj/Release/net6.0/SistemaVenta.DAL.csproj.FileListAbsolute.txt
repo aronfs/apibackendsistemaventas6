@@ -1,0 +1,16 @@
+C:\Users\arons\Desktop\Produccion\apibackendsistemaventasaspnetcore6\SistemaVenta.DAL\bin\Release\net6.0\SistemaVenta.DAL.deps.json
+C:\Users\arons\Desktop\Produccion\apibackendsistemaventasaspnetcore6\SistemaVenta.DAL\bin\Release\net6.0\SistemaVenta.DAL.dll
+C:\Users\arons\Desktop\Produccion\apibackendsistemaventasaspnetcore6\SistemaVenta.DAL\bin\Release\net6.0\SistemaVenta.DAL.pdb
+C:\Users\arons\Desktop\Produccion\apibackendsistemaventasaspnetcore6\SistemaVenta.DAL\bin\Release\net6.0\SistemaVenta.Model.dll
+C:\Users\arons\Desktop\Produccion\apibackendsistemaventasaspnetcore6\SistemaVenta.DAL\bin\Release\net6.0\SistemaVenta.Model.pdb
+C:\Users\arons\Desktop\Produccion\apibackendsistemaventasaspnetcore6\SistemaVenta.DAL\obj\Release\net6.0\SistemaVenta.DAL.csproj.AssemblyReference.cache
+C:\Users\arons\Desktop\Produccion\apibackendsistemaventasaspnetcore6\SistemaVenta.DAL\obj\Release\net6.0\SistemaVenta.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\arons\Desktop\Produccion\apibackendsistemaventasaspnetcore6\SistemaVenta.DAL\obj\Release\net6.0\SistemaVenta.DAL.AssemblyInfoInputs.cache
+C:\Users\arons\Desktop\Produccion\apibackendsistemaventasaspnetcore6\SistemaVenta.DAL\obj\Release\net6.0\SistemaVenta.DAL.AssemblyInfo.cs
+C:\Users\arons\Desktop\Produccion\apibackendsistemaventasaspnetcore6\SistemaVenta.DAL\obj\Release\net6.0\SistemaVenta.DAL.csproj.CoreCompileInputs.cache
+C:\Users\arons\Desktop\Produccion\apibackendsistemaventasaspnetcore6\SistemaVenta.DAL\obj\Release\net6.0\SistemaVenta.DAL.sourcelink.json
+C:\Users\arons\Desktop\Produccion\apibackendsistemaventasaspnetcore6\SistemaVenta.DAL\obj\Release\net6.0\SistemaV.EE7A9206.Up2Date
+C:\Users\arons\Desktop\Produccion\apibackendsistemaventasaspnetcore6\SistemaVenta.DAL\obj\Release\net6.0\SistemaVenta.DAL.dll
+C:\Users\arons\Desktop\Produccion\apibackendsistemaventasaspnetcore6\SistemaVenta.DAL\obj\Release\net6.0\refint\SistemaVenta.DAL.dll
+C:\Users\arons\Desktop\Produccion\apibackendsistemaventasaspnetcore6\SistemaVenta.DAL\obj\Release\net6.0\SistemaVenta.DAL.pdb
+C:\Users\arons\Desktop\Produccion\apibackendsistemaventasaspnetcore6\SistemaVenta.DAL\obj\Release\net6.0\ref\SistemaVenta.DAL.dll
