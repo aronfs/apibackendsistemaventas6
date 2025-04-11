@@ -1,8 +1,8 @@
 # Etapa 1: Build
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
+WORKDIR /app
 
-# Copiamos los .csproj necesarios
+# Copiamos los archivos de proyecto
 COPY SistemaVenta.API/SistemaVenta.API.csproj SistemaVenta.API/
 COPY SistemaVenta.BLL/SistemaVenta.BLL.csproj SistemaVenta.BLL/
 COPY SistemaVenta.DAL/SistemaVenta.DAL.csproj SistemaVenta.DAL/
@@ -17,22 +17,23 @@ RUN dotnet restore SistemaVenta.API/SistemaVenta.API.csproj
 # Copiamos todo el código fuente
 COPY . .
 
-# Establecemos carpeta de trabajo al proyecto principal
-WORKDIR /src/SistemaVenta.API
+# Nos posicionamos en la carpeta del API
+WORKDIR /app/SistemaVenta.API
 
-# Publicamos la app en /out
-RUN dotnet publish -c Release -o /out
+# Publicamos en una carpeta de salida estándar
+RUN dotnet publish -c Release -o /app/out
 
 # Etapa 2: Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
 WORKDIR /app
 
-# Copiamos los archivos publicados
-COPY --from=build /out .
+# Copiamos la salida del publish
+COPY --from=build /app/out .
 
-# Exponemos el puerto
+# Exponemos el puerto (opcional si Railway lo hace solo)
 EXPOSE 80
 
-# Ejecutamos la app
+# Comando de ejecución
 ENTRYPOINT ["dotnet", "SistemaVenta.API.dll"]
+
 
