@@ -1,26 +1,36 @@
 # Etapa 1: Build
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /app
 
-# Copiar todo el código
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /src
+
+# Copia los archivos de solución y proyectos
+COPY ./APISistemaVentas.sln .
+COPY ./SistemaVenta.API/SistemaVenta.API.csproj ./SistemaVenta.API/
+COPY ./SistemaVenta.BLL/SistemaVenta.BLL.csproj ./SistemaVenta.BLL/
+COPY ./SistemaVenta.DAL/SistemaVenta.DAL.csproj ./SistemaVenta.DAL/
+COPY ./SistemaVenta.DTO/SistemaVenta.DTO.csproj ./SistemaVenta.DTO/
+COPY ./SistemaVenta.IOC/SistemaVenta.IOC.csproj ./SistemaVenta.IOC/
+COPY ./SistemaVenta.Model/SistemaVenta.Model.csproj ./SistemaVenta.Model/
+COPY ./SistemaVenta.Utility/SistemaVenta.Utility.csproj ./SistemaVenta.Utility/
+
+# Restaura paquetes NuGet
+RUN dotnet restore
+
+# Copia todo el resto del código fuente
 COPY . .
 
-# Restaurar dependencias (ajusta la ruta si es necesario)
-RUN dotnet restore src/SistemaVenta.API/SistemaVenta.API.csproj
+# Publica la aplicación en modo release
+RUN dotnet publish SistemaVenta.API/SistemaVenta.API.csproj -c Release -o /app/publish
 
-# Publicar el proyecto API
-RUN dotnet publish src/SistemaVenta.API/SistemaVenta.API.csproj -c Release -o /app/publish
+# Etapa 2: Imagen de producción
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
 
-# Etapa 2: Runtime
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
 WORKDIR /app
-
-# Copiar los archivos publicados
 COPY --from=build /app/publish .
 
-# Exponer el puerto (opcional)
+# Expone el puerto de la API (ajusta si usas otro)
 EXPOSE 80
 
-# Ejecutar la aplicación
+# Comando de arranque
 ENTRYPOINT ["dotnet", "SistemaVenta.API.dll"]
-
