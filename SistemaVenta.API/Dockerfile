@@ -13,17 +13,20 @@ COPY ./SistemaVenta.Model/SistemaVenta.Model.csproj ./SistemaVenta.Model/
 COPY ./SistemaVenta.Utility/SistemaVenta.Utility.csproj ./SistemaVenta.Utility/
 
 RUN dotnet restore
-
 COPY . .
 
-RUN dotnet publish SistemaVenta.API/SistemaVenta.API.csproj -c Release -o /app
+# OJO: salida a una carpeta llamada `out`
+RUN dotnet publish SistemaVenta.API/SistemaVenta.API.csproj -c Release -o /app/out
 
-# Etapa 2: Imagen final de producción
+# Etapa 2: Imagen de producción
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
 
-WORKDIR /app
-COPY --from=build /app .
+# Entramos al directorio `out`
+WORKDIR /app/out
+
+COPY --from=build /app/out .
 
 EXPOSE 80
 
+# ¡Este es el arranque obligatorio desde dentro de /app/out!
 ENTRYPOINT ["dotnet", "SistemaVenta.API.dll"]
