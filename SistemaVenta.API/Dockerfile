@@ -37,5 +37,5 @@ ENV ASPNETCORE_ENVIRONMENT=Production
 COPY --from=build /app/out ./
 
 # Iniciar la aplicación
-ENTRYPOINT ["dotnet", "SistemaVenta.API.http"]
+ENTRYPOINT ["dotnet", "SistemaVenta.API.dll"]
 
