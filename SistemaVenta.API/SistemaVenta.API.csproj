@@ -4,10 +4,11 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UseIIS>true</UseIIS>
-    <IISExpressSSLPort>0</IISExpressSSLPort>
-    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    <!-- Asegura que archivos extra se incluyan también al publicar -->
+
+    <!-- Producción -->
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +25,18 @@
     <ProjectReference Include="..\SistemaVenta.IOC\SistemaVenta.IOC.csproj" />
   </ItemGroup>
 
-
+  <!-- 🔐 Copiar archivos de configuración -->
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings.Production.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>
+
