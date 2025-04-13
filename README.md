@@ -1,6 +1,6 @@
 # APISistemaVentas
 
-Este es un proyecto de API para la gestión de ventas, desarrollado en .NET 8.
+Este es un proyecto de API para la gestión de ventas, desarrollado en .NET 6.
 
 ## 🚀 Tecnologías utilizadas
 - C# con ASP.NET Core
